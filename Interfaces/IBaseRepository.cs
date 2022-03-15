@@ -9,8 +9,16 @@ namespace Projeto03_csharp.Interfaces
     /// <summary>
     /// Interface padrão para definir os métodos dos repositorios
     /// </summary>
-    public interface IBaseRepository
+    public interface IBaseRepository<T>
     {
+        #region Métodos abstratos
 
+        void Create(T obj);
+        void Update(T obj);
+        void Delete(T obj);
+        List<T> GetAll();
+
+
+        #endregion
     }
 }
