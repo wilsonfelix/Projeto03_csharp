@@ -68,7 +68,7 @@ namespace Projeto03_csharp.Repositories
         {
             //escreve o comando SQL
             var sqlUpdate = @"
-                            UPDATE FUNCIONARIO SET ID = @Id, NOME = @Nome, MATRICULA = @Matricula, CPF = @Cpf, DATAADMISSAO = @DataAdmissao, EMPRESAID = @EmpresaId
+                            UPDATE FUNCIONARIO SET NOME = @Nome, MATRICULA = @Matricula, CPF = @Cpf, DATAADMISSAO = @DataAdmissao, EMPRESAID = @EmpresaId
                             WHERE ID = @Id
                             ";
 
