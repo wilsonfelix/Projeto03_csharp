@@ -51,7 +51,6 @@ namespace Projeto03_csharp.Repositories
             //escreve o comando SQL
             var sqlSelect = @"
                             SELECT * FROM EMPRESA
-                            WHERE ID = @Id
                             ORDER BY NOMEFANTASIA ASC
                             ";
             //abrindo conexão com o sqlserver

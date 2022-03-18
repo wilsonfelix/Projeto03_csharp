@@ -2,7 +2,7 @@
 using Projeto03_csharp.Repositories;
 using System;
 
-namespace Projeto03_csharp
+namespace ProjetoAula03
 {
     class Program
     {
@@ -27,13 +27,13 @@ namespace Projeto03_csharp
                     var empresa = new Empresa();
                     empresa.Id = Guid.NewGuid();
 
-                    Console.WriteLine("Informe o Nome Fantasia.....: ");
+                    Console.Write("Informe o Nome Fantasia.....: ");
                     empresa.NomeFantasia = Console.ReadLine();
 
-                    Console.WriteLine("Informe a Razão Social......: ");
+                    Console.Write("Informe a Razão Social......: ");
                     empresa.RazaoSocial = Console.ReadLine();
 
-                    Console.WriteLine("Informe o CNPJ..............: ");
+                    Console.Write("Informe o CNPJ..............: ");
                     empresa.Cnpj = Console.ReadLine();
 
                     var empresaRepository = new EmpresaRepository();
@@ -41,6 +41,71 @@ namespace Projeto03_csharp
 
                     Console.WriteLine("\nEMPRESA CADASTRADA COM SUCESSO!");
                 }
+                else if (opcao == 2)
+                {
+                    Console.WriteLine("\nATUALIZAÇÃO DE EMPRESA:\n");
+
+                    var empresa = new Empresa();
+
+                    Console.Write("Informe o ID da Empresa.....: ");
+                    empresa.Id = Guid.Parse(Console.ReadLine());
+
+                    Console.Write("Informe o Nome Fantasia.....: ");
+                    empresa.NomeFantasia = Console.ReadLine();
+
+                    Console.Write("Informe a Razão Social......: ");
+                    empresa.RazaoSocial = Console.ReadLine();
+
+                    Console.Write("Informe o CNPJ..............: ");
+                    empresa.Cnpj = Console.ReadLine();
+
+                    var empresaRepository = new EmpresaRepository();
+                    empresaRepository.Update(empresa);
+
+                    Console.WriteLine("\nEMPRESA ATUALIZADA COM SUCESSO!");
+                }
+                else if (opcao == 3)
+                {
+                    Console.WriteLine("\nEXCLUSÃO DE EMPRESA:\n");
+
+                    var empresa = new Empresa();
+
+                    Console.Write("Informe o ID da Empresa.....: ");
+                    empresa.Id = Guid.Parse(Console.ReadLine());
+
+                    var empresaRepository = new EmpresaRepository();
+                    empresaRepository.Delete(empresa);
+
+                    Console.WriteLine("\nEMPRESA EXCLUÍDA COM SUCESSO!");
+                }
+                else if (opcao == 4)
+                {
+                    Console.WriteLine("\nCONSULTA DE EMPRESAS:\n");
+
+                    var empresaRepository = new EmpresaRepository();
+                    var empresas = empresaRepository.GetAll();
+
+                    //imprimindo os dados das empresas
+                    foreach (var item in empresas)
+                    {
+                        Console.WriteLine($"ID............: {item.Id}");
+                        Console.WriteLine($"NOME FANTASIA.: {item.NomeFantasia}");
+                        Console.WriteLine($"RAZÃO SOCIAL..: {item.RazaoSocial}");
+                        Console.WriteLine($"CNPJ..........: {item.Cnpj}");
+                        Console.WriteLine("---");
+                    }
+                }
+
+                Console.Write("\nDeseja continuar? (S,N): ");
+                var confirmacao = Console.ReadLine();
+
+                if (confirmacao.Equals("S"))
+                {
+                    Console.Clear(); //limpar o console
+                    Main(args); //recursividade
+                }
+
+                Console.WriteLine("\nFIM!");
             }
             catch (Exception e)
             {

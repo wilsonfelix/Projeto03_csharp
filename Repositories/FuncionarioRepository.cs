@@ -53,7 +53,6 @@ namespace Projeto03_csharp.Repositories
             //escreve o comando SQL
             var sqlSelect = @"
                             SELECT * FROM FUNCIONARIO
-                            WHERE ID = @Id
                             ORDER BY NOME ASC
                             ";
             //abrindo conexão com o sqlserver
